@@ -1,6 +1,13 @@
 <h1><%= @articles.title %></h1>
-<p><%= image_tag @articles.image.url %></p>
+<p>
+  <% if @articles.image.exists? %>
+      <p><%= image_tag @articles.image.url %></p>
+  <% end %>
+</p>
+
 <p><%= @articles.body %></p>
+
+<% if logged_in? %>
 
 <p>
   Tags:
@@ -19,4 +26,5 @@
 
 <%= link_to "edit", edit_article_path(@articles) %>
 
+<% end %>
 
